@@ -1,9 +1,10 @@
 (function($){
 $.fn.fancyZoom = function(options){
 
-  var options   = options || {};
-  var directory = options && options.directory ? options.directory : 'images';
-  var zooming   = false;
+  var options     = options || {};
+  var directory   = options && options.directory ? options.directory : 'images';
+  var eventTarget = options && options.eventTarget ? options.eventTarget : 'body';
+  var zooming     = false;
 
   if ($('#zoom').length == 0) {
     var ext = $.browser.msie ? 'gif' : 'png';
@@ -120,6 +121,7 @@ $.fn.fancyZoom = function(options){
       unfixBackgroundsForIE();
       zoom_close.show();
       zooming = false;
+      $(eventTarget).trigger('fancyzoom:open');
     })
     return false;
   }
@@ -145,6 +147,7 @@ $.fn.fancyZoom = function(options){
       }
       unfixBackgroundsForIE();
       zooming = false;
+      $(eventTarget).trigger('fancyzoom:hide');
     });
     return false;
   }
