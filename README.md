@@ -5,7 +5,7 @@ mootools version looks like it already had it, but the jQuery and Prototype
 versions did not. Maybe I'll add this feature to the Prototype version as 
 well.
 
-Documentation/Usage:
+## Documentation/Usage:
 
 Adds support for triggering open and hide events on a selector so that
 you can listen for when fancyzoom has opened and when it has closed and
@@ -27,7 +27,7 @@ additional operations on the original click
 target. The element is passed by jQuery as the second parameter to your
 function:
 
-    $('body').bind('fancyzoom:open', function (event, clickTarget) {
+    $('#somediv').bind('fancyzoom:open', function (event, clickTarget) {
       var $el = $(clickTarget);
       //...
     });
