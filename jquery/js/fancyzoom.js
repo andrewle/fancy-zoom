@@ -39,7 +39,7 @@ $.fn.fancyZoom = function(options){
 
     $('html').click(function(e){if($(e.target).parents('#zoom:visible').length == 0) hide();});
     $(document).keyup(function(event){
-        if (event.keyCode == 27 && $('#zoom:visible').length > 0) hide();
+      if (event.keyCode == 27 && $('#zoom:visible').length > 0) hide();
     });
 
     $('#zoom_close').click(hide);
@@ -60,38 +60,38 @@ $.fn.fancyZoom = function(options){
 
   function show(e) {
     if (zooming) return false;
-		zooming         = true;
-		var content_div = $($(this).attr('href'));
-  	var zoom_width  = options.width;
-		var zoom_height = options.height;
+    zooming         = true;
+    var content_div = $($(this).attr('href'));
+    var zoom_width  = options.width;
+    var zoom_height = options.height;
 
-		var width       = window.innerWidth || (window.document.documentElement.clientWidth || window.document.body.clientWidth);
-  	var height      = window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight);
-  	var x           = window.pageXOffset || (window.document.documentElement.scrollLeft || window.document.body.scrollLeft);
-  	var y           = window.pageYOffset || (window.document.documentElement.scrollTop || window.document.body.scrollTop);
-  	var window_size = {'width':width, 'height':height, 'x':x, 'y':y}
+    var width       = window.innerWidth  || (window.document.documentElement.clientWidth  || window.document.body.clientWidth);
+    var height      = window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight);
+    var x           = window.pageXOffset || (window.document.documentElement.scrollLeft   || window.document.body.scrollLeft);
+    var y           = window.pageYOffset || (window.document.documentElement.scrollTop    || window.document.body.scrollTop);
+    var window_size = {'width':width, 'height':height, 'x':x, 'y':y}
 
-		var width              = (zoom_width || content_div.width()) + 60;
-		var height             = (zoom_height || content_div.height()) + 60;
-		var d                  = window_size;
+    var width              = (zoom_width  || content_div.width()) + 60;
+    var height             = (zoom_height || content_div.height()) + 60;
+    var d                  = window_size;
 
-		// ensure that newTop is at least 0 so it doesn't hide close button
-		var newTop             = Math.max((d.height/2) - (height/2) + y, 0);
-		var newLeft            = (d.width/2) - (width/2);
-		var curTop             = e.pageY;
-		var curLeft            = e.pageX;
+    // ensure that newTop is at least 0 so it doesn't hide close button
+    var newTop             = Math.max((d.height/2) - (height/2) + y, 0);
+    var newLeft            = (d.width/2) - (width/2);
+    var curTop             = e.pageY;
+    var curLeft            = e.pageX;
 
-		zoom_close.attr('curTop', curTop);
-		zoom_close.attr('curLeft', curLeft);
-		zoom_close.attr('scaleImg', options.scaleImg ? 'true' : 'false');
+    zoom_close.attr('curTop', curTop);
+    zoom_close.attr('curLeft', curLeft);
+    zoom_close.attr('scaleImg', options.scaleImg ? 'true' : 'false');
 
     $('#zoom').hide().css({
-			position	: 'absolute',
-			top				: curTop + 'px',
-			left			: curLeft + 'px',
-			width     : '1px',
-			height    : '1px'
-		});
+      position : 'absolute',
+      top      : curTop + 'px',
+      left     : curLeft + 'px',
+      width    : '1px',
+      height   : '1px'
+    });
 
     fixBackgroundsForIE();
     zoom_close.hide();
@@ -100,12 +100,12 @@ $.fn.fancyZoom = function(options){
       $('#zoom').click(hide);
     }
 
-		if (options.scaleImg) {
-  		zoom_content.html(content_div.html());
-  		$('#zoom_content img').css('width', '100%');
-		} else {
-		  zoom_content.html('');
-		}
+    if (options.scaleImg) {
+      zoom_content.html(content_div.html());
+      $('#zoom_content img').css('width', '100%');
+    } else {
+      zoom_content.html('');
+    }
 
     $('#zoom').animate({
       top     : newTop + 'px',
@@ -115,25 +115,25 @@ $.fn.fancyZoom = function(options){
       height  : height
     }, 500, null, function() {
       if (options.scaleImg != true) {
-    		zoom_content.html(content_div.html());
-  		}
-			unfixBackgroundsForIE();
-			zoom_close.show();
-			zooming = false;
+        zoom_content.html(content_div.html());
+      }
+      unfixBackgroundsForIE();
+      zoom_close.show();
+      zooming = false;
     })
     return false;
   }
 
   function hide() {
     if (zooming) return false;
-		zooming         = true;
-	  $('#zoom').unbind('click');
-		fixBackgroundsForIE();
-		if (zoom_close.attr('scaleImg') != 'true') {
-  		zoom_content.html('');
-		}
-		zoom_close.hide();
-		$('#zoom').animate({
+    zooming         = true;
+    $('#zoom').unbind('click');
+    fixBackgroundsForIE();
+    if (zoom_close.attr('scaleImg') != 'true') {
+      zoom_content.html('');
+    }
+    zoom_close.hide();
+    $('#zoom').animate({
       top     : zoom_close.attr('curTop') + 'px',
       left    : zoom_close.attr('curLeft') + 'px',
       opacity : "hide",
@@ -141,10 +141,10 @@ $.fn.fancyZoom = function(options){
       height  : '1px'
     }, 500, null, function() {
       if (zoom_close.attr('scaleImg') == 'true') {
-    		zoom_content.html('');
-  		}
+        zoom_content.html('');
+      }
       unfixBackgroundsForIE();
-			zooming = false;
+      zooming = false;
     });
     return false;
   }
@@ -163,12 +163,12 @@ $.fn.fancyZoom = function(options){
     if ($.browser.msie && parseFloat($.browser.version) >= 7) {
       switchBackgroundImagesTo('gif');
     }
-	}
+  }
 
   function unfixBackgroundsForIE() {
     if ($.browser.msie && $.browser.version >= 7) {
       switchBackgroundImagesTo('png');
     }
-	}
+  }
 }
 })(jQuery);
