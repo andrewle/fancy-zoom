@@ -121,7 +121,7 @@ $.fn.fancyZoom = function(options){
       unfixBackgroundsForIE();
       zoom_close.show();
       zooming = false;
-      $(eventTarget).trigger('fancyzoom:open');
+      $(eventTarget).trigger('fancyzoom:open', e.currentTarget);
     })
     return false;
   }
